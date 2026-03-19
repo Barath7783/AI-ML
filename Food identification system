@@ -1,0 +1,13 @@
+:- initialization(main).
+
+main :-
+    write('Enter age: '), read(Age),
+    write('Disease (diabetes/heart/none): '), read(D),
+    food(Age, D, F),
+    write('Suggested Food: '), write(F), nl.
+
+% Rules
+food(A, diabetes, 'Low sugar diet') :- A > 0.
+food(A, heart, 'Low fat diet') :- A > 0.
+food(A, none, 'Balanced diet') :- A < 60.
+food(A, none, 'Soft healthy diet') :- A >= 60.
