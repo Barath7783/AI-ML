@@ -1,0 +1,12 @@
+:- initialization(main).
+
+main :-
+    write('Does it have fur? (yes/no): '), read(Fur),
+    write('Does it bark? (yes/no): '), read(Bark),
+    identify(Fur, Bark, Animal),
+    write('Animal is: '), write(Animal), nl.
+
+identify(yes, yes, 'Dog').
+identify(yes, no, 'Cat').
+identify(no, yes, 'Unknown Animal').
+identify(no, no, 'Snake').
