@@ -1,28 +1,16 @@
-student(divya, 65, 70, 60). 
-% -------- Total -------- 
-total(Name, Total) :- 
-    student(Name, S1, S2, S3), 
-    Total is S1 + S2 + S3. 
-% -------- Average -------- 
-average(Name, Avg) :- 
-    total(Name, Total), 
-    Avg is Total / 3. 
-% -------- Grade -------- 
-grade(Name, Grade) :- 
-    average(Name, Avg), 
-    ( Avg >= 80 -> Grade = 'A' 
-    ; Avg >= 60 -> Grade = 'B' 
-    ; Avg >= 40 -> Grade = 'C' 
-    ; Grade = 'F' 
-    ). 
-% -------- Result -------- 
-result(Name) :- 
-    student(Name, S1, S2, S3), 
-    total(Name, T), 
-    average(Name, A), 
-    grade(Name, G), 
-    write('Name: '), write(Name), nl, 
-    write('Marks: '), write(S1), write(', '), write(S2), write(', '), write(S3), nl, 
-    write('Total: '), write(T), nl, 
-    write('Average: '), write(A), nl, 
-    write('Grade: '), write(G), nl.
+:- initialization(main).
+
+main :-
+    write('Enter Degree (btech/mca/bba): '), read(D),
+    write('Enter CGPA: '), read(C),
+    career(D, C, R),
+    write('Suggested Career: '), write(R), nl.
+
+career(btech, C, 'Software Engineer') :- C >= 8.
+career(btech, C, 'Tester') :- C < 8.
+
+career(mca, C, 'Developer') :- C >= 7.5.
+career(mca, C, 'Support Engineer') :- C < 7.5.
+
+career(bba, C, 'Manager') :- C >= 7.
+career(bba, C, 'Sales Executive') :- C < 7.
