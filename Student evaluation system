@@ -14,3 +14,9 @@ career(mca, C, 'Support Engineer') :- C < 7.5.
 
 career(bba, C, 'Manager') :- C >= 7.
 career(bba, C, 'Sales Executive') :- C < 7.
+
+
+
+output:
+(input)
+career(btech, 8.5, R)
