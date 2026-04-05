@@ -1,0 +1,28 @@
+import heapq
+graph = {
+    'A': [('B', 1), ('C', 3)],
+    'B': [('D', 1)],
+    'C': [('D', 1)],
+    'D': []
+}
+
+heuristic = {'A': 3, 'B': 1, 'C': 1, 'D': 0}
+
+def astar(start, goal):
+    pq = [(0, start)]   # priority queue (cost, node)
+    visited = set()
+
+    while pq:
+        cost, node = heapq.heappop(pq)
+        print(node, end=" ")
+
+        if node == goal:
+            print("\nGoal reached")
+            return
+
+        visited.add(node)
+
+        for n, w in graph[node]:
+            if n not in visited:
+                heapq.heappush(pq, (cost + w + heuristic[n], n))
+astar('A', 'D')
