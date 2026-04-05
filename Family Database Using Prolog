@@ -1,0 +1,34 @@
+% Facts
+male(john).
+female(mary).
+male(david).
+female(linda).
+
+parent(john, mary).
+parent(linda, mary).
+parent(mary, david).
+
+% Rules
+father(X, Y) :-
+    parent(X, Y),
+    male(X).
+
+mother(X, Y) :-
+    parent(X, Y),
+    female(X).
+
+grandparent(X, Y) :-
+    parent(X, Z),
+    parent(Z, Y).
+
+sibling(X, Y) :-
+    parent(Z, X),
+    parent(Z, Y),
+    X \= Y.
+
+
+Sample Queries
+?- father(john, mary).
+?- mother(linda, mary).
+?- grandparent(john, david).
+?- sibling(mary, david).
