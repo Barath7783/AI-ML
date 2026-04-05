@@ -1,0 +1,27 @@
+def water_jug(jug1, jug2, target):
+    x = 0
+    y = 0
+    print("Steps:")
+
+    while x != target and y != target:
+        if x == 0:
+            x = jug1
+            print(f"Fill Jug1: ({x}, {y})")
+
+        elif y == jug2:
+            y = 0
+            print(f"Empty Jug2: ({x}, {y})")
+
+        else:
+            transfer = min(x, jug2 - y)
+            y += transfer
+            x -= transfer
+            print(f"Pour Jug1 -> Jug2: ({x}, {y})")
+
+    print(f"\nTarget achieved: ({x}, {y})")
+
+jug1 = int(input("Enter capacity of Jug1: "))
+jug2 = int(input("Enter capacity of Jug2: "))
+target = int(input("Enter target amount: "))
+
+water_jug(jug1, jug2, target)
